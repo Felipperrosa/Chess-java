@@ -1,13 +1,12 @@
 package application;
 
-import boardgame.Board;
-import boardgame.Position;
+
 import chess.ChessException;
 import chess.ChessMatch;
 import chess.ChessPiece;
 import chess.ChessPosition;
 
-import java.awt.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.InputMismatchException;
@@ -39,6 +38,12 @@ public class Program {
 
                if (capturedPiece != null){
                    captured.add(capturedPiece);
+               }
+
+               if (chessMatch.getPromoted() != null){
+                   System.out.print("Enter piece for promotion (B/N/R/Q): ");
+                   String type = sc.nextLine();
+                   chessMatch.replacePromotedPiece(type);
                }
            }catch (ChessException e) {
                System.out.println(e.getMessage());
